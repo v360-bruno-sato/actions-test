@@ -1,12 +1,9 @@
 name: workflow name
 
 on:
-  push:
+  pull_request:
     branches:
-      - '*'         # matches every branch that doesn't contain a '/'
-      - '*/*'       # matches every branch containing a single '/'
-      - '**'        # matches every branch
-      - '!master'   # excludes master
+      - 'master'
 
 jobs:
   build:
@@ -25,4 +22,3 @@ jobs:
         run: npm run build:ci
       - name: Test
         run: npm run test-headless
-      - name: Archive build
